@@ -1,0 +1,92 @@
+<mujoco model="YP Ready2Jump">
+  <include file="../common.xml"/>
+  <!-- modified from https://github.com/google-deepmind/mujoco_menagerie/tree/main/robotis_op3 -->
+  <include file="mjmodel.xml" />
+  <size memory="1M"/>
+
+  <custom>
+    <numeric name="agent_planner" data="2" />
+    <numeric name="agent_horizon" data="0.513" />
+    <numeric name="agent_timestep" data="0.0025" />
+    <numeric name="sampling_trajectories" data="33"/>
+    <numeric name="sampling_spline_points" data="3" />
+    <numeric name="sampling_exploration" data="0.1" />
+    <numeric name="gradient_spline_points" data="5" />
+    <numeric name="derivative_skip" data="3" />
+    <numeric name="sample_gradient_trajectories" data="8"/>
+    <numeric name="residual_Height Goal" data="0.48 0.0 2" />
+    <numeric name="residual_Foot distance Goal" data="0.1 0.0 0.3" />
+    <numeric name="residual_Foot plane margin" data="0.22 0.0 0.4" />
+    <numeric name="residual_leg ext margin" data="0.134 0.0 0.3" />
+    <numeric name="residual_Cadence" data="2 0 4" />
+    <numeric name="residual_Amplitude" data=".06 0 0.2" />
+    <numeric name="residual_Duty ratio" data="0 0 1"/>
+    <numeric name="residual_select_Gait" data="0"/>
+    <text name="residual_list_Gait" data="Stand|Walk|Trot|Jump" />
+    <text name="task_transition" data="Stand|Walk|Jump" />
+  </custom>
+
+  <sensor>
+    <!-- cost -->
+    <user name="Height" dim="1" user="6 100.0 0.0 100.0 0.1" />
+    <user name="Balance" dim="1" user="6 50.0 0.0 100.0 0.1" />
+    <user name="CoM Vel." dim="2" user="0 10.0 0.0 100.0" />
+    <user name="Feet Diff" dim="1" user="0 50.0 0.0 100.0" />
+    <user name="Leg Sideplan" dim="1" user="0 50 0 100 0.1" />
+    <user name="Gait" dim="4" user="6 2 0 1000 0.03" />
+    <user name="Ctrl Diff" dim="8" user="0 1.2 0.0 1.5" />
+    <user name="Upright" dim="13" user="2 5.0 0.0 25.0 0.01" />
+    <user name="Joint Vel" dim="8" user="0 1.0e-3 0 1.0e-3" />
+    <user name="Effort" dim="8" user="0 0.02 0.0 0.1" />
+    <user name="Goal Pos" dim="1" user="2 50 0 100 0.1" />
+    <user name="Leg Joint Diff" dim="1" user="2 50 0 100 0.1" />
+
+    <framepos name="head_position" objtype="site" objname="head"/>
+    <framequat name="head_orientation" objtype="site" objname="head"/>
+    
+    <framepos name="left_foot_position" objtype="site" objname="left_foot"/>
+    <framepos name="right_foot_position" objtype="site" objname="right_foot"/>
+
+    <framepos name="left_foot_ref" objtype="site" objname="left_contact_ref"/>
+    <framepos name="right_foot_ref" objtype="site" objname="right_contact_ref"/>
+
+    <subtreelinvel name="body_subtreelinvel" body="pelvis"/>
+    <subtreecom name="body_subtreecom" body="pelvis"/>
+
+    <framepos      name="trace0" objtype="site" objname="head"/>
+    <framepos      name="trace1" objtype="site" objname="left_foot"/>
+    <framepos      name="trace2" objtype="site" objname="right_foot"/>
+
+    <framezaxis name="torso_up" objtype="site" objname="torso"/>
+    <framezaxis name="foot_right_up" objtype="site" objname="right_foot"/>
+    <framezaxis name="foot_left_up" objtype="site" objname="left_foot"/>
+
+    <jointpos name="HIP_R"   joint="HR"/>
+    <jointpos name="HIP_L"   joint="HL"/>
+    <jointpos name="THIGH_R" joint="TR"/>
+    <jointpos name="THIGH_L" joint="TL"/>
+    <jointpos name="SHIN_R"  joint="SR"/>
+    <jointpos name="SHIN_L"  joint="SL"/>
+    <jointpos name="FOOT_R"  joint="FR"/>
+    <jointpos name="FOOT_L"  joint="FL"/>
+
+    <touch name="LF_touch" site="LF"/>
+    <touch name="LB_touch" site="LB"/>
+    <touch name="RF_touch" site="RF"/>
+    <touch name="RB_touch" site="RB"/>
+
+  </sensor>
+
+  <worldbody>
+    <body name="goal" mocap="true" pos=".3 0 0.26">
+      <geom size="0.12" contype="0" conaffinity="0" rgba="0 1 0 .5" group="2"/>
+    </body>
+  </worldbody>
+
+  
+
+  <keyframe>
+    <key name='home' 
+    qpos='0 0 0.48 0 0 0 0 0 0 0 0 0 0 0 0'/>
+  </keyframe>
+</mujoco>

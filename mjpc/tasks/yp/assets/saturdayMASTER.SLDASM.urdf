@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="saturdayMASTER.SLDASM">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-9.8075E-08 -0.026388 0.016857"
+        rpy="0 0 0" />
+      <mass
+        value="1.0499" />
+      <inertia
+        ixx="0.0010747"
+        ixy="1.1569E-09"
+        ixz="7.0948E-09"
+        iyy="0.0024931"
+        iyz="4.1237E-06"
+        izz="0.0018481" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="HR">
+    <inertial>
+      <origin
+        xyz="-0.0022112 -0.0074687 0.0012046"
+        rpy="0 0 0" />
+      <mass
+        value="1.1716" />
+      <inertia
+        ixx="0.0010107"
+        ixy="-9.9562E-08"
+        ixz="-1.4637E-08"
+        iyy="0.00081252"
+        iyz="-2.027E-05"
+        izz="0.00088422" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/HR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/HR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="HR"
+    type="continuous">
+    <origin
+      xyz="0.116000001728538 0.0760306768742228 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="HR" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="TR">
+    <inertial>
+      <origin
+        xyz="0.0032217 -1.4794E-12 -0.11697"
+        rpy="0 0 0" />
+      <mass
+        value="0.2485" />
+      <inertia
+        ixx="0.00045966"
+        ixy="5.7577E-13"
+        ixz="1.3281E-12"
+        iyy="0.00043118"
+        iyz="-1.7793E-08"
+        izz="6.6608E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/TR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/TR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="TR"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="HR" />
+    <child
+      link="TR" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="SR">
+    <inertial>
+      <origin
+        xyz="0.013454 -0.0086691 -0.1053"
+        rpy="0 0 0" />
+      <mass
+        value="0.45579" />
+      <inertia
+        ixx="0.00057709"
+        ixy="6.348E-07"
+        ixz="6.5536E-07"
+        iyy="0.0005433"
+        iyz="3.7418E-06"
+        izz="0.00013658" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/SR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/SR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SR"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.200000000447037"
+      rpy="0 0 0" />
+    <parent
+      link="TR" />
+    <child
+      link="SR" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="FR">
+    <inertial>
+      <origin
+        xyz="6.2538E-06 0.015791 -0.026269"
+        rpy="0 0 0" />
+      <mass
+        value="0.12898" />
+      <inertia
+        ixx="0.00019456"
+        ixy="-8.3569E-09"
+        ixz="-2.9458E-10"
+        iyy="1.6916E-05"
+        iyz="6.4711E-06"
+        izz="0.00019296" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/FR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/FR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.24"
+      rpy="0 0 0" />
+    <parent
+      link="SR" />
+    <child
+      link="FR" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="HL">
+    <inertial>
+      <origin
+        xyz="0.0022047 -0.0074687 0.0010787"
+        rpy="0 0 0" />
+      <mass
+        value="1.1716" />
+      <inertia
+        ixx="0.0010107"
+        ixy="-9.9562E-08"
+        ixz="2.3594E-06"
+        iyy="0.00081252"
+        iyz="-2.027E-05"
+        izz="0.00088422" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/HL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/HL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="HL"
+    type="continuous">
+    <origin
+      xyz="-0.116000001728532 0.0760306768742213 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="HL" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="TL">
+    <inertial>
+      <origin
+        xyz="-0.0032217 1.4785E-12 -0.11697"
+        rpy="0 0 0" />
+      <mass
+        value="0.2485" />
+      <inertia
+        ixx="0.00045966"
+        ixy="5.7577E-13"
+        ixz="-1.3281E-12"
+        iyy="0.00043118"
+        iyz="1.7793E-08"
+        izz="6.6608E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/TL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/TL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="TL"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="HL" />
+    <child
+      link="TL" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="SL">
+    <inertial>
+      <origin
+        xyz="-0.013454 -0.0086668 -0.10518"
+        rpy="0 0 0" />
+      <mass
+        value="0.45579" />
+      <inertia
+        ixx="0.00057709"
+        ixy="-6.2087E-07"
+        ixz="5.7271E-08"
+        iyy="0.00054331"
+        iyz="3.935E-06"
+        izz="0.00013657" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/SL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/SL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SL"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.200000000447025"
+      rpy="0 0 0" />
+    <parent
+      link="TL" />
+    <child
+      link="SL" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="FL">
+    <inertial>
+      <origin
+        xyz="6.2538E-06 0.015791 -0.026269"
+        rpy="0 0 0" />
+      <mass
+        value="0.12898" />
+      <inertia
+        ixx="0.00019456"
+        ixy="-8.3569E-09"
+        ixz="-2.9458E-10"
+        iyy="1.6916E-05"
+        iyz="6.4711E-06"
+        izz="0.00019296" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/FL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/FL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.24"
+      rpy="0 0 0" />
+    <parent
+      link="SL" />
+    <child
+      link="FL" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="PCPC">
+    <inertial>
+      <origin
+        xyz="-7.7136E-06 -0.089737 0.064156"
+        rpy="0 0 0" />
+      <mass
+        value="0.84889" />
+      <inertia
+        ixx="0.0014036"
+        ixy="-1.5516E-09"
+        ixz="3.415E-08"
+        iyy="0.0014961"
+        iyz="-6.4247E-06"
+        izz="0.0026653" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/PCPC.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://saturdayMASTER.SLDASM/meshes/PCPC.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PCPC"
+    type="fixed">
+    <origin
+      xyz="0 0.1668 0.076047"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="PCPC" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

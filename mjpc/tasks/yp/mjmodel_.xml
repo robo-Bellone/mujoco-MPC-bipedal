@@ -1,0 +1,124 @@
+<mujoco model="saturdayMASTER.SLDASM">
+  <compiler angle="radian" meshdir="assets" texturedir="assets"/>
+  <size njmax="500" nconmax="100" />
+  <option cone="elliptic" impratio="10"/>
+
+  <default>
+    <joint damping="0.03" armature="0.002" frictionloss="0.02"/>
+    <general ctrlrange="-3.141592 3.141592" forcerange="-9 9"/>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="HR" file="HR.STL"/>
+    <mesh name="TR" file="TR.STL"/>
+    <mesh name="SR" file="SR.STL"/>
+    <mesh name="FR" file="FR.STL"/>
+    <mesh name="HL" file="HL.STL"/>
+    <mesh name="TL" file="TL.STL"/>
+    <mesh name="SL" file="SL.STL"/>
+    <mesh name="FL" file="FL.STL"/>
+    <mesh name="PCPC" file="PCPC.STL"/>
+
+    <texture type="2d" name="trunk_A1" file="trunk_A1.png"/>
+    <material name="carbonfibre" texture="trunk_A1" specular="0" shininess="0.25"/>
+
+    <material name="dark" specular="0" shininess="0.25" rgba="0.2 0.2 0.2 1"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+  </asset>
+
+   <visual>
+	  <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+	  <global azimuth="-90"/>
+    <scale forcewidth="0.035" contactwidth="0.1" contactheight="0.04" com="0.2" />
+    <rgba com="0.502 1 0 0.5" contactpoint="1 1 0.6 0.4" contactforce="0.98 0.4 0.4 0.7" />
+  </visual>
+
+  <statistic extent="1" center="0 0 .3"/>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" diffuse="0.5 0.5 0.5" specular="0.3 0.3 0.3" directional="true" castshadow="false"/>
+    <geom type="plane" size="10 10 .01" material="grid"/>
+    <body name="pelvis" pos = "0 0 .51" quat = "1 0 0 1">
+      <freejoint/>
+      <site name="head" rgba="1 0 0 1" pos="0.0 0.1 0.0" group="5"/>
+      <body name="base_inertia">
+        <inertial pos="-9.8075E-08 -0.026388 0.016857" quat="7.04842911E-01 7.09363426E-01 2.95162595E-06 -3.53024086E-06" mass="0.8" diaginertia="0.0010747 0.00184807 0.00249313"/>
+        <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="base_link"/>
+      </body>
+      <body name="pc_inertia">
+        <inertial pos="0 0.07705 0.13101" quat="9.99995560e-01 2.97977116e-03 1.48833623e-05 1.00802829e-05" mass="0.84889" diaginertia="0.0012861 0.00135326 0.00243134"/>
+        <geom pos="0 0.1668 0.076047" type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="PCPC"/>
+      </body>
+      <!-- <body name="semi_inertia">
+        <inertial pos="0 0.1705 0.13101" euler="-1.57 0 0" mass="1" diaginertia="0.0012861 0.00135326 0.00243134"/>
+      </body> -->
+      <site name="torso"/>
+      <body name="HR" pos="0.116 0.0760307 0">
+        <inertial pos="-0.0022112 -0.0074687 0.0012046" quat="0.610545 0.791982 -0.00018656 -0.000166422" mass="1.1716" diaginertia="0.0010107 0.000889554 0.000807186"/>
+        <joint name="HR" pos="0 0 0" axis="0 -1 0" limited="false"/>
+        <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="HR"/>
+        <body name="TR">
+          <inertial pos="0.0032217 -1.4794e-12 -0.11697" quat="1 -2.44026e-05 0 0" mass="0.2485" diaginertia="0.00045966 0.00043118 6.6608e-05"/>
+          <joint name="TR" pos="0 0 0" axis="-1 0 0" limited="false"/>
+          <joint name="SR_parent" pos="0 0 0" axis="-1 0 0" limited="false"/>
+          <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="TR"/>
+          <body name="SR" pos="0 0 -0.2">
+            <inertial pos="0.013454 -0.0086691 -0.1053" quat="0.999944 0.00459107 -0.00078075 0.00948332" mass="0.45579" diaginertia="0.000577103 0.000543322 0.000136545"/>
+            <joint name="SR" pos="0 0 0" axis="1 0 0" limited="false"/>
+            <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="SR"/>
+            <body name="FR" pos="0 0 -0.24">
+              <inertial pos="6.2538e-06 0.015791 -0.026269" quat="0.71996 0.694016 0.000136179 -0.000175049" mass="0.12898" diaginertia="0.00019456 0.000193198 1.66785e-05"/>
+              <joint name="FR" pos="0 0 0" axis="1 0 0" limited="false" damping="0.07" frictionloss="0.2" armature="0.03"/>
+              <geom type="mesh" rgba="0.62745 0.62745 0.62745 1" mesh="FR"/>
+              <site name="right_contact_ref" rgba="0 1 0 1" type="sphere" size="0.02"  pos="0.0 0.0 0.0" group="5"/>
+              <site name="right_foot" rgba="0 1 0 0.5" pos="0.0 0.0 -0.04" group="5"/>
+              <site name="RB" rgba="1 0 0 1" pos="0 0.04 -0.04" type="cylinder" size="0.05" group="5"/>
+              <site name="RF" rgba="1 0 0 1" pos="0 -0.04 -0.04" type="cylinder" size="0.05" group="5"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="HL" pos="-0.116 0.0760307 0">
+        <inertial pos="0.0022047 -0.0074687 0.0010787" quat="0.61048 0.791973 -0.00678111 0.00679143" mass="1.1716" diaginertia="0.00101075 0.00088951 0.000807185"/>
+        <joint name="HL" pos="0 0 0" axis="0 -1 0" limited="false"/>
+        <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="HL"/>
+        <body name="TL">
+          <inertial pos="-0.0032217 1.4785e-12 -0.11697" quat="1 2.44026e-05 0 0" mass="0.2485" diaginertia="0.00045966 0.00043118 6.6608e-05"/>
+          <joint name="TL" pos="0 0 0" axis="-1 0 0" limited="false"/>
+          <joint name="SL_parent" pos="0 0 0" axis="-1 0 0" limited="false"/>
+          <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="TL"/>
+          <body name="SL" pos="0 0 -0.2">
+            <inertial pos="-0.013454 -0.0086668 -0.10518" quat="0.999946 0.00483719 -2.73708e-05 -0.00918761" mass="0.45579" diaginertia="0.000577101 0.000543337 0.000136532"/>
+            <joint name="SL" pos="0 0 0" axis="1 0 0" limited="false"/>
+            <geom type="mesh" rgba="0.69804 0.69804 0.69804 1" mesh="SL"/>
+            <body name="FL" pos="0 0 -0.24">
+              <inertial pos="6.2538e-06 0.015791 -0.026269" quat="0.71996 0.694016 0.000136179 -0.000175049" mass="0.12898" diaginertia="0.00019456 0.000193198 1.66785e-05"/>
+              <joint name="FL" pos="0 0 0" axis="1 0 0" limited="false" damping="0.07" frictionloss="0.2" armature="0.03"/>
+              <geom type="mesh" rgba="0.62745 0.62745 0.62745 1" mesh="FL"/>
+              <site name="left_contact_ref" rgba="0 1 0 1" type="sphere" size="0.02" pos="0.0 0.0 0.0" group="5"/>
+              <site name="left_foot" rgba="1 0 0 1" pos="0 0 -0.04" group="5"/>
+              <site name="LB" rgba="1 0 0 1" pos="0 0.04 -0.04" type="cylinder" size="0.05" group="5"/>
+              <site name="LF" rgba="1 0 0 1" pos="0 -0.04 -0.04" type="cylinder" size="0.05"  group="5"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <general name="hipr_act" joint="HR"/>
+    <general name="thighr_act" joint="TR"/>
+    <general name="shinr_act" joint="SR_parent"/>
+    <general name="footr_act" joint="FR"/>
+    <general name="hipl_act" joint="HL"/>
+    <general name="thighl_act" joint="TL"/>
+    <general name="shinl_act" joint="SL_parent"/>
+    <general name="footl_act" joint="FL"/>
+  </actuator>
+  <equality>
+    <joint name="axis_constraint_r" active="true" joint1="SR_parent" joint2="SR" solref="1e-10 1"/>
+    <joint name="axis_constraint_l" active="true" joint1="SL_parent" joint2="SL" solref="1e-10 1"/>
+  </equality>
+</mujoco>
