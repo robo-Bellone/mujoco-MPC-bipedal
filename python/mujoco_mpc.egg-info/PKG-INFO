@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: mujoco-mpc
+Version: 0.1.0
+Summary: MuJoCo MPC (MJPC)
+Home-page: https://github.com/google-deepmind/mujoco_mpc
+Author: DeepMind
+Author-email: mujoco@deepmind.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.8
+Provides-Extra: test

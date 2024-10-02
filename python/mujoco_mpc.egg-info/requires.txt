@@ -1,0 +1,7 @@
+grpcio
+mujoco-mjx
+mujoco>=3.1.1
+protobuf
+
+[test]
+absl-py
